@@ -47,4 +47,20 @@ pip install scikit-learn -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 ## 🚀 Quick Start
 
-Model Training
+### 2. Model Training
+
+We train the Epi-UQ model using HLA-I peptide sequences. The training script (`train_hla_i.py`) utilizes the ESM-2 (650M) protein language model fine-tuned with LoRA, followed by a 1D-CNN and Attention Pooling module.
+
+#### Data Format Requirements
+The training script expects input data in **CSV format** with the following columns:
+- `Epitope.1`: The peptide amino acid sequence (e.g., `KLQPETQRY`).
+- `Label`: Binary label (1 for presented binder, 0 for non-binder).
+
+#### Single Model Training
+To train a single model, configure the data paths and run the script. By default, the model is trained on `cuda:1` with a fixed random seed.
+
+```bash
+cd codes
+
+# Run training script
+python train_hla_i.py
