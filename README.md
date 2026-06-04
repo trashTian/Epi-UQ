@@ -43,3 +43,8 @@ pip install datasets==2.19.1 accelerate==1.12.0 peft==0.18.0 \
 
 # Install scikit-learn
 pip install scikit-learn -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+## 🚀 Quick Start
+
+Model Training
