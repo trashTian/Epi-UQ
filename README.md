@@ -47,7 +47,7 @@ pip install scikit-learn -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 ## 🚀 Quick Start
 
-### 2. Model Training
+### 1. Model Training
 
 We train the Epi-UQ model using HLA-I peptide sequences. The training script (`train_hla_i.py`) utilizes the ESM-2 (650M) protein language model fine-tuned with LoRA, followed by a 1D-CNN and Attention Pooling module.
 
@@ -64,3 +64,33 @@ cd codes
 
 # Run training script
 python train_hla_i.py
+```
+
+### 2. Model Inference & Evaluation
+
+The inference script (`infer_hla.py`) is designed to evaluate the trained Epi-UQ ensemble across multiple independent and out-of-distribution (OOD) test sets. It automatically calculates comprehensive metrics and formats the results as `Mean ± Std` for publication.
+
+#### Data Format Requirements
+The test datasets must be in **CSV format** and contain the following columns:
+- **Sequence Column**: Must be named either `Epitope.1` or `Peptide`.
+- **Label Column**: Must be named `Label` (1 for positive binders, 0 for negatives).
+
+#### Configuration & Running
+Before running the script, open `infer_hla.py` and update the global configuration variables at the top of the file to match your local paths:
+
+```python
+# 1. Update model and checkpoint paths
+ESM_MODEL_PATH = "/path/to/facebook/esm2_t33_650M_UR50D"
+CHECKPOINT_DIR = "/path/to/Advanced_baselines/checkpoints_lora"
+
+# 2. Define the random seeds used for ensemble inference (Default: 3 models)
+SEEDS = [1, 2, 3]
+
+# 3. Define the test datasets you want to evaluate
+TEST_SETS = {
+    "Test_Set": "/path/to/data/HLA_I_epitope_test.csv",
+    "Ext_1_Time": "/path/to/data/HLA_I_external_1_time_negative.csv",
+    "Ext_4_Time": "/path/to/data/HLA_I_external_4_time_negative.csv",
+    "NEPDB": "/path/to/data/NEPDB_I.csv"
+}
+```
