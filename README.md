@@ -4,15 +4,6 @@
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch 2.6.0](https://img.shields.io/badge/PyTorch-2.6.0-orange.svg)](https://pytorch.org/)
 
-**Epi-UQ** is an allele-agnostic framework for peptide-HLA binding prediction that integrates anchor-aware representation learning with ensemble-based epistemic uncertainty quantification. By enforcing localized physicochemical constraints and quantifying prediction variance, Epi-UQ effectively mitigates shortcut learning and systematically filters false positives in out-of-distribution (OOD) and highly imbalanced clinical screening scenarios.
-
-## 🔥 Key Features
-
-- **Allele-Agnostic Prediction**: Predict peptide presentation without requiring explicit HLA allele inputs
-- **Parameter-Efficient Architecture**: Leverages LoRA-adapted ESM-2 with localized 1D-CNN and attention pooling
-- **Uncertainty Quantification**: Ensemble-based epistemic UQ reduces false-positive predictions by **91.4%** in imbalanced screening
-- **Robust OOD Generalization**: Maintains high predictive fidelity on novel mutational landscapes and cross-source cohorts
-- **Clinical Translation**: Provides calibrated risk-stratification for efficient neoantigen prioritization
 
 ## 📦 Installation
 
